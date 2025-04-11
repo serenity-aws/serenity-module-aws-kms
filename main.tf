@@ -15,7 +15,14 @@ module "aws_kms_alias" {
 module "aws_kms_alias_inline" {
   source = "../serenity-resource-aws-kms-alias"
 
-  data = { for alias in local.inline_aliases : alias._id => alias }
+  data = merge(
+    {
+      for alias in local.inline_aliases : alias._id => alias
+    },
+    {
+      for alias in local.inline_prefix_aliases : alias._id => alias
+    }
+  )
   upstream = merge(
     var.upstream,
     {
