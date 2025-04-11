@@ -1,8 +1,13 @@
 output "aws_kms_alias" {
-  value = merge(
-    module.aws_kms_alias.this,
-    module.aws_kms_alias_inline.this
-  )
+  value = module.aws_kms_alias.this
+}
+
+output "aws_kms_alias_inline" {
+  value = module.aws_kms_alias_inline.this
+}
+
+output "aws_kms_alias_inline_prefix" {
+  value = module.aws_kms_alias_inline_prefix.this
 }
 
 output "aws_kms_key" {
