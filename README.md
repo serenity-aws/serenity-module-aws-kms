@@ -1,3 +1,7 @@
-# serenity-resource-aws-template
+# serenity-module-aws-kms
 
-## Generic OpenTofu/Terraform module template for AWS resources
+## OpenTofu/Terraform module for implementing AWS KMS and related resources
+
+Implements the following resources:
+- [aws_kms_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key)
+- [aws_kms_alias](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias)
