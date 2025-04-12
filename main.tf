@@ -2,7 +2,7 @@ module "aws_kms_alias" {
   # source = "../serenity-resource-aws-kms-alias"
   source = "github.com/serenity-aws/serenity-resource-aws-kms-alias.git?ref=main"
 
-  data = try(var.data.aws_kms_alias, {})
+  data = try(var.data.aws_kms_alias.resources, {})
   upstream = merge(
     var.upstream,
     {
@@ -47,7 +47,7 @@ module "aws_kms_key" {
   # source = "../serenity-resource-aws-kms-key"
   source = "github.com/serenity-aws/serenity-resource-aws-kms-key.git?ref=main"
 
-  data             = try(var.data.aws_kms_key, {})
+  data             = try(var.data.aws_kms_key.resources, {})
   upstream         = var.upstream
   name_tag_enabled = var.name_tag_enabled
   tags             = var.tags
