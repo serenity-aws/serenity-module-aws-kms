@@ -3,17 +3,17 @@ variable "create" {
   default = true
 }
 
-variable "data" {
+variable "name_tag_enabled" {
+  type    = bool
+  default = true
+}
+
+variable "resources" {
   type = any
 }
 
 variable "upstream" {
   type = any
-}
-
-variable "name_tag_enabled" {
-  type    = bool
-  default = true
 }
 
 variable "tags" {
