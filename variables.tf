@@ -16,6 +16,10 @@ variable "upstream" {
   type = any
 }
 
+variable "template_variables" {
+  type = any
+}
+
 variable "tags" {
   type = map(any)
 }

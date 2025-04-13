@@ -13,7 +13,3 @@ output "aws_kms_alias_inline" {
 output "aws_kms_alias_inline_prefix" {
   value = module.aws_kms_alias_inline_prefix.this
 }
-
-output "aws_kms_key_policy" {
-  value = module.aws_kms_key_policy.this
-}
