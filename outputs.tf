@@ -1,3 +1,7 @@
+output "aws_ecr_repository" {
+  value = module.aws_ecr_repository.this
+}
+
 output "aws_kms_key" {
   value = module.aws_kms_key.this
 }
