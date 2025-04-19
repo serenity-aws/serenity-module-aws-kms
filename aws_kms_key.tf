@@ -1,14 +1,4 @@
 locals {
-  inline_aliases = toset(flatten([
-    for _id, _properties in try(var.resources.aws_kms_key.resources, {}) : [
-      for alias in try(_properties.aliases, []) : { _id = alias, name = "alias/${alias}", kms_key = _id }
-    ]
-  ]))
-  inline_prefix_aliases = toset(flatten([
-    for _id, _properties in try(var.resources.aws_kms_key.resources, {}) : [
-      for alias in try(_properties.prefix_aliases, []) : { _id = alias, name_prefix = "alias/${alias}", kms_key = _id }
-    ]
-  ]))
   aws_kms_key = {
     for _id, _properties in try(var.resources.aws_kms_key.resources, {}) : _id => merge(
       _properties,
@@ -24,4 +14,14 @@ locals {
       } : {}
     )
   }
+}
+
+module "aws_kms_key" {
+  # source = "../serenity-resource-aws-kms-key"
+  source = "github.com/serenity-aws/serenity-resource-aws-kms-key.git?ref=main"
+
+  resources        = local.aws_kms_key
+  upstream         = var.upstream
+  name_tag_enabled = var.name_tag_enabled
+  tags             = var.tags
 }
