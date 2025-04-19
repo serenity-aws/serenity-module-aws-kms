@@ -12,7 +12,7 @@ locals {
         kms_key = _id,
         policy  = templatestring(data.github_repository_file.policy[_id].content, var.template_variables)
       } : {}
-    )
+    ) if var.create
   }
 }
 

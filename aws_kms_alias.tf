@@ -36,7 +36,7 @@ module "aws_kms_alias_inline" {
   # source = "../serenity-resource-aws-kms-alias"
   source = "github.com/serenity-aws/serenity-resource-aws-kms-alias.git?ref=main"
 
-  resources = { for alias in local.inline_aliases : alias._id => alias }
+  resources = { for alias in local.inline_aliases : alias._id => alias if var.create }
   upstream = merge(
     var.upstream,
     {
@@ -52,7 +52,7 @@ module "aws_kms_alias_inline_prefix" {
   # source = "../serenity-resource-aws-kms-alias"
   source = "github.com/serenity-aws/serenity-resource-aws-kms-alias.git?ref=main"
 
-  resources = { for alias in local.inline_prefix_aliases : alias._id => alias }
+  resources = { for alias in local.inline_prefix_aliases : alias._id => alias if var.create }
   upstream = merge(
     var.upstream,
     {
